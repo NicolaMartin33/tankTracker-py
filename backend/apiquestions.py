@@ -1,11 +1,14 @@
-
+import json
+from flask import Flask, redirect, request
 import requests
 
+app = Flask(__name__)
+with open('sensitive.json') as s:
+   admin = json.load(s)
 
 class apiQuestion_retrevial:
   def __init__(self, menu) -> None:
-    self.auth_token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6IlNIQTI1NjpzS3dsMnlsV0VtMjVmcXhwTU40cWY4MXE2OWFFdWFyMnpLMUdhVGxjdWNZIiwidHlwIjoiSldUIn0.eyJzdWIiOiJ1c2VyIiwiZXhwIjoxNzA4NDc1MTAwLjE3MjgxMywiaWF0IjoxNzA4Mzg4NzAwLjE3MjgxMywianRpIjoiZHU1RF9lNS1PMTRaVERlaGJCUVkzWDZfd3hiNVZ3IiwiY2lkIjoiTjVVODRQaHlLWlVuRTZ5VXpFWGxyZyIsImxpZCI6InQyX2IwbjhkZTF6IiwiYWlkIjoidDJfYjBuOGRlMXoiLCJsY2EiOjE2MTYxOTE5MDYwMDAsInNjcCI6ImVKeUtWdEpTaWdVRUFBRF9fd056QVNjIiwiZmxvIjo5fQ.ok6Fobd4krPJPCIgA5_-86xCofV8KHHG2hYk_YGU2kFiNPKRIllRT6bWV3FYrg3-ZY32b6fZjJszq4VEA0WZVSpCXz0pwtJ74eSVqkWBICMR3TYGWx8UPDUgvV-W0ZTzDqlBXtS4x2SpeuNqPWkgVesBDVgczakfMk-2whuJ4uCqsSnujWJv1XEQjiGHCBfHpRKtYqrtBGl0Gd_h5WTzjj3-rTvTJu0zU7D7nrkP924X0gahlB4H3H2XkeQqzPng0hz2JlBpM0icRLLza8DYIcstZM7kL3Q3_V6YUZFt7ntF16VUca9Wkor7wiTtXm8GRVuVDlI-YxwuOiw9HnF0Pg'
-
+    self.auth_token = admin.get("auth_token")
     self.question_dict =  {
       "Which Fish are the Most Territorial?" : "3",
       "How do I Acclimatise my Fish?" : "4",
